@@ -66,6 +66,12 @@ namespace gd {
             void setBarVisibility(bool v) {
                 this->m_pSliderBar->setVisible(v);
             }
+			
+			void updateBar() {
+				reinterpret_cast<void(__fastcall*)(Slider*)>(
+					base + 0x2ea10
+				)(this);
+			}
 
             static Slider* create(
                 cocos2d::CCNode* target,
