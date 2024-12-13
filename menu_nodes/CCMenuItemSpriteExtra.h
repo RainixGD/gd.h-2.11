@@ -64,7 +64,7 @@ namespace gd {
 
 			this->setAnchorPoint({ .5f, .5f });
 			this->setContentSize(normalImage->getScaledContentSize());
-			normalImage->setPosition(m_obContentSize / 2);
+			//normalImage->setPosition(m_obContentSize / 2);
 
 			m_baseScale = 1.f;
 			m_animationEnabled = true;
