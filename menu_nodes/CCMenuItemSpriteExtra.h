@@ -74,19 +74,19 @@ namespace gd {
 		}
 		
 		virtual void activate(){
-			return reinterpret_cast<void(__thiscall*)(FLAlertLayer*)>(
+			return reinterpret_cast<void(__thiscall*)(CCMenuItemSpriteExtra*)>(
 				base + 0x191c0
 				)(this);
 		}
 		
 		virtual void selected(){
-			return reinterpret_cast<void(__thiscall*)(FLAlertLayer*)>(
+			return reinterpret_cast<void(__thiscall*)(CCMenuItemSpriteExtra*)>(
 				base + 0x19270
 				)(this);
 		}
 		
 		virtual void unselected(){
-			return reinterpret_cast<void(__thiscall*)(FLAlertLayer*)>(
+			return reinterpret_cast<void(__thiscall*)(CCMenuItemSpriteExtra*)>(
 				base + 0x19430
 				)(this);
 		}
