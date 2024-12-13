@@ -72,6 +72,24 @@ namespace gd {
 
 			return true;
 		}
+		
+		virtual void activate(){
+			return reinterpret_cast<void(__thiscall*)(FLAlertLayer*)>(
+				base + 0x191c0
+				)(this);
+		}
+		
+		virtual void selected(){
+			return reinterpret_cast<void(__thiscall*)(FLAlertLayer*)>(
+				base + 0x19270
+				)(this);
+		}
+		
+		virtual void unselected(){
+			return reinterpret_cast<void(__thiscall*)(FLAlertLayer*)>(
+				base + 0x19430
+				)(this);
+		}
 	};
 	#pragma runtime_checks("s", restore)
 }
