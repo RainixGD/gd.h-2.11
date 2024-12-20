@@ -8,6 +8,7 @@ namespace gd {
 	class GJSearchObject;
 	class TextArea;
 	class GJListLayer;
+	class CCMenuItemSpriteExtra;
 
     class LevelBrowserLayer : cocos2d::CCLayer, FLAlertLayerProtocol, SetIDPopupDelegate {
     public:
