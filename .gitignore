@@ -1,4 +1,5 @@
 .vscode/
+.vs/
 
 test/generated.cpp
 test/cocos-headers
