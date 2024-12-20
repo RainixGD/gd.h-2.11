@@ -12,6 +12,7 @@ namespace gd {
 
     class LevelBrowserLayer : public cocos2d::CCLayer, FLAlertLayerProtocol, SetIDPopupDelegate {
     public:
+		PAD(8);//4 byte for missing classes (full: cocos2d::CCLayer, LevelManagerDelegate, FLAlertLayerProtocol, SetIDPopupDelegate, SetTextPopupDelegate)
         void* m_unk;
 		TextArea* m_noInternet;
 		GJListLayer* m_list;
