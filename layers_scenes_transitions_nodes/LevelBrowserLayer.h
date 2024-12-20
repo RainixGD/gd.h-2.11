@@ -10,7 +10,7 @@ namespace gd {
 	class GJListLayer;
 	class CCMenuItemSpriteExtra;
 
-    class LevelBrowserLayer : cocos2d::CCLayer, FLAlertLayerProtocol, SetIDPopupDelegate {
+    class LevelBrowserLayer : public cocos2d::CCLayer, FLAlertLayerProtocol, SetIDPopupDelegate {
     public:
         void* m_unk;
 		TextArea* m_noInternet;
