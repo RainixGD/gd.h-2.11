@@ -14,10 +14,10 @@ namespace gd {
     class CCCircleWave;
     class CurrencyRewardLayer;
     class DialogLayer;
+    class CCScrollLayerExt;
 
     enum GJSongError {
         kGJSongErrorUnknown = 0,
-        // dunno, didnt bother to RE
     };
 
     class TextInputDelegate {
@@ -29,8 +29,32 @@ namespace gd {
         virtual bool allowTextInput(CCTextInputNode*) { return true; }
     };
 
+    class GameRateDelegate {
+    public:
+        virtual void updateRate(void) {}
+    };
+
+    class ListButtonBarDelegate {
+    public:
+        virtual void listButtonBarSwitchedPage(ListButtonBar*, int) {}
+    };
+
+    class DialogDelegate {
+    public:
+        virtual void dialogClosed(DialogLayer*);
+    };
+
+    class GooglePlayDelegate {
+        virtual void googlePlaySignedIn() {}
+    };
+
     class ColorSelectDelegate {
         virtual void colorSelectClosed(cocos2d::CCNode*);
+    };
+
+    class ColorSetupDelegate {
+    public:
+        virtual void colorSetupClosed(int) {}
     };
 
     class ColorPickerDelegate {
@@ -39,6 +63,11 @@ namespace gd {
 
     class GJSpecialColorSelectDelegate {
         virtual void colorSelectClosed(GJSpecialColorSelect*, int);
+    };
+
+    class HSVWidgetPopupDelegate {
+    public:
+        virtual void hsvPopupClosed(HSVWidgetPopup*, cocos2d::ccHSVValue) {}
     };
 
     class GJRotationControlDelegate {
@@ -68,11 +97,42 @@ namespace gd {
         kUpdateResponseUpdateSuccess,
     };
 
+    enum CommentError {
+        kCommentErrorUnknown_not_REd = 0x0,
+    };
+
     enum LikeItemType {
         kLikeItemTypeUnknown,
     };
 
+    class LeaderboardManagerDelegate {
+        virtual void updateUserScoreFinished(void) {}
+        virtual void updateUserScoreFailed(void) {}
+        virtual void loadLeaderboardFinished(cocos2d::CCArray*, char const*) {}
+        virtual void loadLeaderboardFailed(char const*) {}
+    };
+
+    class UserInfoDelegate {
+        virtual void getUserInfoFailed(int) {}
+        virtual void getUserInfoFinished(GJUserScore*) {}
+        virtual void userInfoChanged(GJUserScore*) {}
+    };
+
+    class CommentUploadDelegate {
+        virtual void commentUploadFinished(int) {}
+        virtual void commentUploadFailed(int, CommentError) {}
+        virtual void commentDeleteFailed(int, int) {}
+    };
+
+    class LevelCommentDelegate {
+        virtual void loadCommentsFinished(cocos2d::CCArray*, const char*) {}
+        virtual void loadCommentsFailed(const char*) {}
+        virtual void updateUserScoreFinished(void) {}
+        virtual void setupPageInfo(std::string, const char*) {}
+    };
+
     class LevelDownloadDelegate {
+    public:
         virtual void levelDownloadFinished(GJGameLevel*);
         virtual void levelDownloadFailed(int);
     };
@@ -83,6 +143,7 @@ namespace gd {
     };
 
     class LevelUpdateDelegate {
+    public:
         virtual void levelUpdateFinished(GJGameLevel*, UpdateResponse);
         virtual void levelUpdateFailed(int);
     };
@@ -113,24 +174,70 @@ namespace gd {
     };
 
     class GJDropDownLayerDelegate {
+    public:
         virtual void dropDownLayerWillClose(GJDropDownLayer*);
-    };
-
-    class GooglePlayDelegate {
-        virtual void googlePlaySignedIn() {}
     };
 
     class CCCircleWaveDelegate {
         virtual void circleWaveWillBeRemoved(CCCircleWave*) {}
     };
 
+    enum AccountError {
+        kAccountErrorUnknown = 0,
+    };
+
+    enum BackupAccountError {
+        kBackupAccountErrorUnknown = 0,
+    };
+
+    struct GJAccountRegisterDelegate {
+        virtual void registerAccountFailed(AccountError error) {}
+        virtual void registerAccountFinished(void) {}
+    };
+
+    struct GJAccountLoginDelegate {
+        virtual void loginAccountFailed(AccountError error) {}
+        virtual void loginAccountFinished(int, int) {}
+    };
+
+    struct GJAccountDelegate {
+        virtual void accountStatusChanged(void) {}
+    };
+
+    struct GJAccountBackupDelegate {
+        virtual void backupAccountFailed(BackupAccountError) {}
+        virtual void backupAccountFinished(void) {}
+    };
+
+    struct GJAccountSyncDelegate {
+        virtual void syncAccountFailed(BackupAccountError) {}
+        virtual void syncAccountFinished(void) {}
+    };
+
+    struct GJAccountSettingsDelegate {
+        virtual void updateSettingsFailed(void) {}
+        virtual void updateSettingsFinished(void) {}
+    };
+
+    class CCScrollLayerExtDelegate {
+    public:
+        //lol nice typo rob
+        virtual void scrllViewWillBeginDecelerating(CCScrollLayerExt*) {}
+        virtual void scrollViewDidEndDecelerating(CCScrollLayerExt*) {}
+        virtual void scrollViewTouchMoving(CCScrollLayerExt*) {}
+        virtual void scrollViewDidEndMoving(CCScrollLayerExt*) {}
+        virtual void scrollViewTouchBegin(CCScrollLayerExt*) {}
+        virtual void scrollViewTouchEnd(CCScrollLayerExt*) {}
+    };
+
+    struct DynamicScrollDelegate {
+        void updatePageWithObject(cocos2d::CCObject*, cocos2d::CCObject*) {}
+    };
+
     class CurrencyRewardDelegate {
         virtual void currencyWillExit(CurrencyRewardLayer*);
     };
 
-    class DialogDelegate {
-        virtual void dialogClosed(DialogLayer*);
-    };
 }
 
 #endif

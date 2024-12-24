@@ -28,7 +28,7 @@ namespace gd {
 	};
 
 	class TableViewCell : public cocos2d::CCLayer {
-	protected:
+	public:
 		PAD(8);
 		CCIndexPath m_iIndexPath;
 		PAD(4);
@@ -66,6 +66,44 @@ namespace gd {
 		virtual unsigned int numberOfSectionsInTableView(TableView*) { return 1; }
 		virtual void TableViewCommitCellEditingStyleForRowAtIndexPath(TableView*, TableViewCellEditingStyle, CCIndexPath&) {}
 		virtual TableViewCell* cellForRowAtIndexPath(CCIndexPath&, TableView*) = 0;
+	};
+
+	class GJGameLevel;
+	class LevelCell /* 0x184 */ : public TableViewCell /* 0x17c */ {
+	public:
+		GJGameLevel* m_pLevel;  // 0x17c
+		PAD(4)
+	};
+
+	class GJComment : public cocos2d::CCNode {
+	public:
+		std::string m_sCommentString;
+		PAD(0x18);
+		int m_nCommentID;
+		PAD(4);
+		int m_nLikeCount;
+		PAD(8);
+		int m_nAccountID;
+		std::string m_sUploadDate;
+
+		static GJComment* create(cocos2d::CCDictionary* dict) {
+			return reinterpret_cast<GJComment * (__fastcall*)(cocos2d::CCDictionary*)>(
+				gd::base + 0xc3740
+				)(dict);
+		}
+	};
+
+	class CommentCell : public TableViewCell {
+	public:
+		PAD(0x4);
+		cocos2d::CCSprite* m_pIconSprite;
+		cocos2d::CCLabelBMFont* m_pLikeLabel;
+		GJComment* m_pComment;
+		PAD(0x4);
+	};
+
+	class GJScoreCell : public TableViewCell {
+
 	};
 }
 

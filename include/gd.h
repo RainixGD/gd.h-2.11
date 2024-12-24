@@ -55,6 +55,7 @@ enum FMOD_RESULT;
 #include "layers_scenes_transitions_nodes/LevelEditorLayer.h"
 #include "layers_scenes_transitions_nodes/EditorUI.h"
 #include "layers_scenes_transitions_nodes/NumberInputLayer.h"
+#include "layers_scenes_transitions_nodes/ProfilePage.h"
 #include "layers_scenes_transitions_nodes/SetIDPopup.h"
 #include "layers_scenes_transitions_nodes/CustomSongWidget.h"
 #include "layers_scenes_transitions_nodes/CustomSongLayer.h"
