@@ -15,6 +15,7 @@ namespace gd {
     class CurrencyRewardLayer;
     class DialogLayer;
     class CCScrollLayerExt;
+    class GJUserScore;
 
     enum GJSongError {
         kGJSongErrorUnknown = 0,
@@ -32,11 +33,6 @@ namespace gd {
     class GameRateDelegate {
     public:
         virtual void updateRate(void) {}
-    };
-
-    class ListButtonBarDelegate {
-    public:
-        virtual void listButtonBarSwitchedPage(ListButtonBar*, int) {}
     };
 
     class DialogDelegate {
@@ -63,11 +59,6 @@ namespace gd {
 
     class GJSpecialColorSelectDelegate {
         virtual void colorSelectClosed(GJSpecialColorSelect*, int);
-    };
-
-    class HSVWidgetPopupDelegate {
-    public:
-        virtual void hsvPopupClosed(HSVWidgetPopup*, cocos2d::ccHSVValue) {}
     };
 
     class GJRotationControlDelegate {
@@ -217,17 +208,6 @@ namespace gd {
     struct GJAccountSettingsDelegate {
         virtual void updateSettingsFailed(void) {}
         virtual void updateSettingsFinished(void) {}
-    };
-
-    class CCScrollLayerExtDelegate {
-    public:
-        //lol nice typo rob
-        virtual void scrllViewWillBeginDecelerating(CCScrollLayerExt*) {}
-        virtual void scrollViewDidEndDecelerating(CCScrollLayerExt*) {}
-        virtual void scrollViewTouchMoving(CCScrollLayerExt*) {}
-        virtual void scrollViewDidEndMoving(CCScrollLayerExt*) {}
-        virtual void scrollViewTouchBegin(CCScrollLayerExt*) {}
-        virtual void scrollViewTouchEnd(CCScrollLayerExt*) {}
     };
 
     struct DynamicScrollDelegate {
