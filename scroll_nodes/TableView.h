@@ -75,16 +75,24 @@ namespace gd {
 		PAD(4)
 	};
 
+	class GJUserScore;
 	class GJComment : public cocos2d::CCNode {
 	public:
-		std::string m_sCommentString;
-		PAD(0x18);
-		int m_nCommentID;
-		PAD(4);
-		int m_nLikeCount;
-		PAD(8);
-		int m_nAccountID;
-		std::string m_sUploadDate;
+		std::string m_commentString;
+		std::string m_userName;
+		int m_commentID;
+		int m_userID;
+		int m_likeCount;
+		int m_levelID;
+		bool m_isSpam;
+		int m_accountID;
+		std::string m_uploadDate;
+		bool m_commentDeleted;
+		int m_percentage;
+		int m_modBadge;
+		cocos2d::ccColor3B m_color;
+		bool m_hasLevelID;
+		GJUserScore* m_userScore;
 
 		static GJComment* create(cocos2d::CCDictionary* dict) {
 			return reinterpret_cast<GJComment * (__fastcall*)(cocos2d::CCDictionary*)>(
